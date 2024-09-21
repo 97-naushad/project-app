@@ -2,6 +2,7 @@ github:
   user: ${gh_user}
   token: ${gh_token}
   secret: ${git_secret}
+  orgAllowlist: "github.com/97-naushad/project-app/*"
 
 # repos.yaml
 # Specify TERRAGRUNT_TFPATH environment variable to accommodate setting --default-tf-version
