@@ -4,3 +4,13 @@ github:
   secret: ${git_secret}
 orgAllowlist: "github.com/97-naushad/*"
 enableKubernetesBackend: true
+
+
+extraVolumes:
+  - name: k8s-config
+
+# -- Optionally specify additional volume mounts for the container.
+# Check values.yaml for examples.
+extraVolumeMounts:
+  - name: k8s-config
+    mountPath: /home/atlantis/.kube/
