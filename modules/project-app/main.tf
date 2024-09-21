@@ -9,7 +9,6 @@ resource "helm_release" "atlantis" {
       gh_user    = var.gh_user
       gh_token   = var.gh_token
       git_secret = var.git_secret
-      orgAllowlist: "github.com/97-naushad/project-app/*"
     })
   ]
 }
