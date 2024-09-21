@@ -3,3 +3,4 @@ github:
   token: ${gh_token}
   secret: ${git_secret}
 orgAllowlist: "github.com/97-naushad/*"
+enableKubernetesBackend: true
