@@ -3,28 +3,3 @@ github:
   token: ${gh_token}
   secret: ${git_secret}
 orgAllowlist: "github.com/97-naushad/*"
-
-# repos.yaml
-# Specify TERRAGRUNT_TFPATH environment variable to accommodate setting --default-tf-version
-# Generate json plan via terragrunt for policy checks
-
-repoConfig: |
-  # ---
-  # repos:
-  # - id: /.*/
-  # workflows:
-  #   terragrunt:
-  #     plan:
-  #       steps:
-  #       - run:
-  #           command: | 
-  #             - cd terragrunt/environment/local/app1
-  #             - terragrunt plan -input=false -out=$PLANFILE
-  #           output: strip_refreshing
-  #     apply:
-  #       steps:
-  #       - env:
-  #           # Reduce Terraform suggestion output
-  #           name: TF_IN_AUTOMATION
-  #           value: 'true'
-  #       - run: terragrunt apply $PLANFILE
