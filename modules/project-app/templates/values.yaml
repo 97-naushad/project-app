@@ -9,16 +9,22 @@ orgAllowlist: "github.com/97-naushad/*"
 # Generate json plan via terragrunt for policy checks
 
 repoConfig: |
-  ---
-  repos:
-  - id: /.*/
-    apply_requirements: []
-    workflow: default
-    allowed_overrides: []
-    allow_custom_workflows: false
-  workflows:
-    default:
-      plan:
-        steps: [init, plan]
-      apply:
-        steps: [apply]
+  # ---
+  # repos:
+  # - id: /.*/
+  # workflows:
+  #   terragrunt:
+  #     plan:
+  #       steps:
+  #       - run:
+  #           command: | 
+  #             - cd terragrunt/environment/local/app1
+  #             - terragrunt plan -input=false -out=$PLANFILE
+  #           output: strip_refreshing
+  #     apply:
+  #       steps:
+  #       - env:
+  #           # Reduce Terraform suggestion output
+  #           name: TF_IN_AUTOMATION
+  #           value: 'true'
+  #       - run: terragrunt apply $PLANFILE
