@@ -11,4 +11,4 @@ resource "kubernetes_namespace_v1" "monitoring" {
   }
 }
 
-resource "null_resorce" "test" {}
+resource "null_resource" "test" {}
