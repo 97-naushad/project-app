@@ -32,3 +32,4 @@ repoConfig: |
         steps: [init, plan]
       apply:
         steps: [apply]
+
