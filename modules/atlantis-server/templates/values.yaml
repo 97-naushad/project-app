@@ -12,23 +12,17 @@ config: |
     default:
       plan:
         steps:
-          - init
-          - plan
+        - run:
+            command: terraform init -input=false
+            output: hide
+        - run: terraform plan -input=false -refresh -out $PLANFILE
       apply:
         steps:
-          - apply
+        - run: terraform apply $PLANFILE
 
 repoConfig: |
   ---
   repos:
-  - id: /.*/
-    apply_requirements: []
+  - id: /.*/    
+    branch: /.*/
     workflow: default
-    allowed_overrides: []
-    allow_custom_workflows: false
-  workflows:
-    default:
-      plan:
-        steps: [init, plan]
-      apply:
-        steps: [apply]

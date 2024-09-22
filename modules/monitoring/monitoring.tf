@@ -7,10 +7,6 @@ resource "helm_release" "prometheus" {
 
 resource "kubernetes_namespace_v1" "monitoring" {
   metadata {
-    name = "monitoring"
+    name = var.monitoring_namespace
   }
 }
-
-resource "null_resource" "test" {}
-
-
