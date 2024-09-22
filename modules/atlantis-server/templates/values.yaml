@@ -8,6 +8,9 @@ enableKubernetesBackend: true
 config: |
   ---
   version: 3
+  projects:
+  - name: local-env
+    dir: local-env
   workflows:
     default:
       plan:
