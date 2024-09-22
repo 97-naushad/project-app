@@ -8,24 +8,36 @@ enableKubernetesBackend: true
 config: |
   ---
   version: 3
+  automerge: false
+  delete_source_branch_on_merge: true
+  parallel_plan: true
+  parallel_apply: true
   projects:
-  - name: local-env
-    dir: local-env
+    - name: dev
+      #branch: /main/
+      dir: ./local-env/
+      workspace: default
+      autoplan:
+        when_modified: [ "*.tf", "../modules/**/*.tf", "*.tfvars" ]
+        enabled: true
+      terraform_version: v1.6.6
+      workflow: dev_workflow
   workflows:
-    default:
+    dev_workflow:
       plan:
         steps:
-        - run:
-            command: terraform init -input=false
-            output: hide
-        - run: terraform plan -input=false -refresh -out $PLANFILE
+          - run: echo "terraform init"
+          - init
+          - run: echo "terraform plan"
+          - plan:
       apply:
         steps:
-        - run: terraform apply $PLANFILE
+          - run: echo "terraform apply"
+          - apply
 
 repoConfig: |
   ---
   repos:
   - id: /.*/    
     branch: /.*/
-    workflow: default
+    workflow: dev_workflow
