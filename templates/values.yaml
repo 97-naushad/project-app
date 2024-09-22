@@ -5,3 +5,30 @@ github:
 orgAllowlist: "github.com/97-naushad/*"
 enableKubernetesBackend: true
 
+config: |
+  ---
+  version: 3
+  workflows:
+    default:
+      plan:
+        steps:
+          - init
+          - plan
+      apply:
+        steps:
+          - apply
+
+repoConfig: |
+  ---
+  repos:
+  - id: /.*/
+    apply_requirements: []
+    workflow: default
+    allowed_overrides: []
+    allow_custom_workflows: false
+  workflows:
+    default:
+      plan:
+        steps: [init, plan]
+      apply:
+        steps: [apply]
